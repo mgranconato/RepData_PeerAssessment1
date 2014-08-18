@@ -92,7 +92,7 @@ activity2$steps[is.na(activity2$steps)] <-
 # create a the data frame for the histogram with the filled NA values
 activity2ByDate <- data.frame(rowsum(activity2$steps, activity2$date))
 names(activity2ByDate) <- 'TotalSteps'
-qplot(activity2ByDate$TotalSteps, binwidth = 1000, main = "XXX",xlab = "Total Steps by Date", ylab = "Frequency")  
+qplot(activity2ByDate$TotalSteps, binwidth = 1000, main = "Hystogram with Filled data",xlab = "Total Steps by Date", ylab = "Frequency")  
 
 #calculate mean and median
 steps2Mean <- mean(activity2ByDate$TotalSteps,na.rm=TRUE)
@@ -131,7 +131,7 @@ names(dataFinalPlot) <- c('dayweektype', 'interval', 'StepsMean')
 
 ```{r, results='hide'}
 finalPlot <- qplot(interval, 
-           StepsMean, data = dataFinalPlot, geom = 'line', xlab = "5-minute interval",ylab = 'Number of steps') 
+           StepsMean, data = dataFinalPlot, geom = 'line', main = "Weekday vs Weekend pattern", xlab = "5-minute interval",ylab = 'Number of steps') 
 
 finalPlot + facet_wrap(~ dayweektype,ncol=1)
 
